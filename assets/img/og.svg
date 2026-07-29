@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="'Space Grotesk', sans-serif">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c4dff"/>
+      <stop offset="0.5" stop-color="#3a4dff"/>
+      <stop offset="1" stop-color="#ff5a3c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <g transform="translate(80,80)">
+    <rect width="64" height="64" rx="15" fill="#0b0b0d"/>
+    <path d="M32 13c-10.5 0-19 8.6-19 19s8.5 19 19 19c6.7 0 12.6-3.4 16-8.6-3 2.6-6.9 4.2-11.2 4.2-9.4 0-17-7.6-17-17S27.4 12 36.8 12c4.3 0 8.2 1.6 11.2 4.2C44.6 11 38.7 13 32 13Z" fill="#fff"/>
+    <circle cx="42.5" cy="32" r="8.5" fill="#2f43ff"/>
+    <text x="84" y="45" font-size="34" font-weight="700" fill="#0b0b0d">Loop</text>
+  </g>
+  <text x="80" y="300" font-size="76" font-weight="700" fill="#0b0b0d" letter-spacing="-2">Casa de inovação em <tspan fill="url(#g)">IA</tspan></text>
+  <text x="80" y="380" font-size="34" font-weight="500" fill="#55555c">Consultoria que implementa IA na sua empresa</text>
+  <text x="80" y="424" font-size="34" font-weight="500" fill="#55555c">+ Loop Studio, que desenvolve produtos digitais 360°</text>
+  <g transform="translate(80,520)" font-size="26" font-weight="600" fill="#0b0b0d">
+    <text x="0" y="0">€ 4M faturados</text>
+    <text x="240" y="0" fill="#8a8a90">·</text>
+    <text x="270" y="0">17.664 vendas</text>
+    <text x="520" y="0" fill="#8a8a90">·</text>
+    <text x="550" y="0">258 afiliados</text>
+  </g>
+</svg>
