@@ -469,6 +469,96 @@ body.nav-open .nav-toggle span::after { top:0; transform: rotate(-45deg); }
   #my-cal-inline { min-height: 560px; }
 }
 
+/* ============================================================
+   SCROLL PROGRESS
+   ============================================================ */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; z-index: 200; height: 3px; width: 100%;
+  background: var(--grad); transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform .08s linear; pointer-events: none;
+}
+
+/* ============================================================
+   AURAS ANIMADAS (fundo vivo do hero)
+   ============================================================ */
+.aura { position: absolute; z-index: 0; border-radius: 50%; filter: blur(70px); pointer-events: none; }
+.aura-1 { width: 46vw; max-width: 640px; aspect-ratio: 1; left: -8%; top: 4%;
+  background: radial-gradient(circle, rgba(91,173,245,.5), transparent 62%);
+  animation: drift1 22s ease-in-out infinite alternate; }
+.aura-2 { width: 42vw; max-width: 580px; aspect-ratio: 1; right: 0%; top: 32%;
+  background: radial-gradient(circle, rgba(186,91,245,.4), transparent 62%);
+  animation: drift2 27s ease-in-out infinite alternate; }
+@keyframes drift1 { to { transform: translate(12%, 10%) scale(1.14); } }
+@keyframes drift2 { to { transform: translate(-10%, -8%) scale(1.12); } }
+
+/* ============================================================
+   COVER / MANIFESTO (vídeo de fundo em loop + mesh)
+   ============================================================ */
+.cover { position: relative; overflow: hidden; isolation: isolate; color: #fff; background: #05060a; }
+.cover-bg { position: absolute; inset: 0; z-index: 0; }
+.cover-video, .cover-mesh { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.cover-video { opacity: 0; transition: opacity .8s var(--ease); }
+.cover.has-video .cover-video { opacity: 1; }
+.cover.has-video .cover-mesh { opacity: .22; }
+.cover-scrim { position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(3,7,18,.9), rgba(3,7,18,.55) 58%, rgba(3,7,18,.4)),
+    linear-gradient(0deg, rgba(3,7,18,.55), transparent 55%);
+}
+.cover-inner { position: relative; z-index: 2; padding-block: clamp(88px, 13vw, 188px); max-width: 900px; }
+.cover .eyebrow { color: rgba(255,255,255,.72); }
+.cover .eyebrow::before { background: rgba(255,255,255,.6); }
+.cover .h2 { color: #fff; max-width: 22ch; margin: 1rem 0 1.4rem; }
+.cover .grad-word { background: var(--grad-soft); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.cover .lead { color: rgba(255,255,255,.82); max-width: 60ch; margin-bottom: 2.3rem; }
+
+/* ============================================================
+   MARQUEE INFINITO
+   ============================================================ */
+.marquee { position: relative; overflow: hidden; width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.marquee-track { display: flex; align-items: center; gap: clamp(2.2rem, 5vw, 4.6rem); width: max-content;
+  animation: marquee var(--marquee-dur, 34s) linear infinite; will-change: transform; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee--reverse .marquee-track { animation-direction: reverse; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.client-marquee { margin-top: .4rem; }
+.client-marquee .marquee-track img { height: clamp(26px, 3.4vw, 38px); width: auto; object-fit: contain;
+  opacity: .5; filter: grayscale(1); transition: opacity .3s var(--ease), filter .3s var(--ease); }
+.client-marquee .marquee-track img:hover { opacity: 1; filter: grayscale(0); }
+
+.tools-marquee .marquee-track { gap: clamp(1.9rem, 4vw, 3.6rem); }
+.tools-marquee .marquee-track img { height: clamp(24px, 2.8vw, 30px); width: auto; object-fit: contain;
+  opacity: .8; filter: grayscale(.35); transition: opacity .3s var(--ease), filter .3s var(--ease); }
+.tools-marquee .marquee-track img:hover { opacity: 1; filter: grayscale(0); }
+
+/* stack-strip agora empilha rótulo + marquee full-width */
+.stack-strip .container { display: block; padding-block: 0; margin-bottom: 1.3rem; }
+
+/* ============================================================
+   SPOTLIGHT nos cards (segue o cursor)
+   ============================================================ */
+.spotlight { position: relative; }
+.spotlight::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(91,173,245,.13), transparent 60%);
+  opacity: 0; transition: opacity .35s var(--ease);
+}
+.spotlight:hover::after { opacity: 1; }
+.svc.spotlight > *, .prod.spotlight > * { position: relative; z-index: 1; }
+.prod.spotlight::after { background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), rgba(126,140,245,.2), transparent 60%); }
+
+/* drift vivo nos glows escuros */
+.products::before { animation: drift2 26s ease-in-out infinite alternate; }
+.arm--studio::before { animation: drift1 24s ease-in-out infinite alternate; }
+
+@media (max-width: 760px) {
+  .aura { filter: blur(50px); opacity: .7; }
+  .cover-inner { max-width: none; }
+}
+
 /* Acessibilidade — reduzir movimento */
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
