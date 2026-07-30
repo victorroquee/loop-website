@@ -6,28 +6,32 @@
 
 /* ---------- Tokens ---------- */
 :root {
-  /* Cores base — claro/mono */
+  /* Cores base — paleta oficial da Loop (loopconsult.com.br) */
   --bg:        #ffffff;
-  --bg-soft:   #f6f6f3;
-  --bg-softer: #fbfbf9;
-  --ink:       #0b0b0d;
-  --ink-2:     #55555c;
-  --ink-3:     #8a8a90;
-  --line:      #e7e7e2;
-  --line-2:    #efefe9;
+  --bg-soft:   #f4f6fb;   /* branco frio da Loop */
+  --bg-softer: #fafbfe;
+  --ink:       #030712;   /* quase-preto da Loop */
+  --ink-2:     #4b5163;
+  --ink-3:     #878da0;
+  --line:      #e4e8f0;
+  --line-2:    #eef1f7;
 
-  /* Acento Loop (consultoria — sóbrio/eletrico) */
-  --accent:    #2f43ff;
-  --accent-ink:#1a29c9;
-  --accent-soft:#eef0ff;
+  /* Acento Loop (azul-violeta da marca) */
+  --accent:    #5b6ef5;
+  --accent-ink:#4133d8;
+  --accent-soft:#eef1ff;
+
+  /* Gradiente-assinatura da Loop: azul → roxo */
+  --brand-blue:  #5badf5;
+  --brand-purple:#ba5bf5;
 
   /* Studio (contraste — bloco escuro criativo) */
-  --studio-bg: #0b0b0d;
-  --studio-ink:#f4f4f2;
-  --studio-mut:#a7a7ad;
+  --studio-bg: #030712;
+  --studio-ink:#f4f6fb;
+  --studio-mut:#9aa1b4;
   --studio-line:rgba(255,255,255,.12);
-  --grad:      linear-gradient(120deg,#7c4dff 0%,#3a4dff 42%,#ff5a3c 100%);
-  --grad-soft: linear-gradient(120deg,#a78bff 0%,#7d8bff 50%,#ff8a72 100%);
+  --grad:      linear-gradient(120deg,#5badf5 0%,#7e86f5 50%,#ba5bf5 100%);
+  --grad-soft: linear-gradient(120deg,#8fccff 0%,#a9adff 50%,#d59bff 100%);
 
   /* Tipografia */
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
@@ -137,6 +141,7 @@ h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 600; line-height: 1
 .nav { display: flex; align-items: center; justify-content: space-between; height: 74px; }
 .brand { display: inline-flex; align-items: center; gap: .6rem; font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; letter-spacing: -.03em; }
 .brand-mark { width: 30px; height: 30px; flex: none; }
+.brand-logo { height: 25px; width: auto; display: block; }
 .nav-links { display: flex; align-items: center; gap: clamp(1rem, 2.4vw, 2.2rem); }
 .nav-links a { font-size: .95rem; font-weight: 500; color: var(--ink-2); transition: color .25s; position: relative; }
 .nav-links a:hover { color: var(--ink); }
@@ -154,7 +159,20 @@ body.nav-open .nav-toggle span::after { top:0; transform: rotate(-45deg); }
 /* ============================================================
    HERO
    ============================================================ */
-.hero { padding-top: clamp(120px, 17vw, 190px); padding-bottom: clamp(52px, 7vw, 90px); position: relative; }
+.hero { padding-top: clamp(120px, 17vw, 190px); padding-bottom: clamp(52px, 7vw, 90px); position: relative; overflow: hidden; }
+.hero .container { position: relative; z-index: 2; }
+
+/* Globo-grafo interativo (canvas) — discreto, atrás do conteúdo, não bloqueia clique */
+.hero-globe {
+  position: absolute; top: 50%; right: -8%; transform: translateY(-50%);
+  width: min(720px, 56vw); height: auto; aspect-ratio: 1 / 1;
+  z-index: 1; pointer-events: none;
+  -webkit-mask-image: radial-gradient(closest-side, #000 58%, transparent 100%);
+          mask-image: radial-gradient(closest-side, #000 58%, transparent 100%);
+}
+@media (max-width: 900px) {
+  .hero-globe { right: -34%; top: 58%; width: 118%; opacity: .42; }
+}
 .hero-badge {
   display: inline-flex; align-items: center; gap: .55rem;
   padding: .5rem .9rem; border: 1px solid var(--line); border-radius: 999px;
@@ -202,7 +220,7 @@ body.nav-open .nav-toggle span::after { top:0; transform: rotate(-45deg); }
 .arm--studio > * { position: relative; z-index: 1; }
 .arm--studio .arm-tag { background: var(--grad); -webkit-background-clip:text; background-clip:text; color: transparent; font-weight: 700; }
 .arm--studio p { color: var(--studio-mut); }
-.arm--studio li svg { color: #ff8a72; }
+.arm--studio li svg { color: var(--brand-blue); }
 .arm--studio .brand-mark path { fill: #fff; }
 
 /* ============================================================
@@ -274,7 +292,7 @@ body.nav-open .nav-toggle span::after { top:0; transform: rotate(-45deg); }
   display: flex; flex-direction: column; min-height: 240px;
 }
 .prod:hover { border-color: rgba(255,255,255,.32); transform: translateY(-4px); background: rgba(255,255,255,.04); }
-.prod .kicker { font-size: .74rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #ff8a72; margin-bottom: 1.2rem; }
+.prod .kicker { font-size: .74rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--brand-blue); margin-bottom: 1.2rem; }
 .prod h3 { color: #fff; font-size: 1.25rem; margin-bottom: .55rem; }
 .prod p { color: var(--studio-mut); font-size: .93rem; }
 .prod .state { margin-top: auto; padding-top: 1.3rem; font-size: .82rem; color: var(--studio-mut); display: inline-flex; align-items: center; gap: .5rem; }
@@ -303,6 +321,7 @@ body.nav-open .nav-toggle span::after { top:0; transform: rotate(-45deg); }
 .footer { background: var(--studio-bg); color: var(--studio-mut); padding-block: clamp(56px,7vw,84px) 2.5rem; }
 .footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 2.5rem; padding-bottom: 3rem; border-bottom: 1px solid var(--studio-line); }
 .footer .brand { color: #fff; margin-bottom: 1rem; }
+.footer .brand-logo { height: 28px; }
 .footer .brand-mark path { fill:#fff; }
 .footer-blurb { max-width: 40ch; font-size: .95rem; }
 .footer h4 { color: #fff; font-family: var(--font-body); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.1rem; font-weight: 600; }
