@@ -102,4 +102,30 @@
     );
     counters.forEach((el) => co.observe(el));
   }
+
+  /* ---------- Reel: carrega o vídeo só ao clicar (performance) ---------- */
+  document.querySelectorAll(".reel").forEach((reel) => {
+    const load = () => {
+      const url = reel.getAttribute("data-video");
+      if (!url) return; // ainda é placeholder, sem vídeo definido
+      if (reel.classList.contains("is-playing")) return;
+      const media = reel.querySelector(".reel-media");
+      let el;
+      if (/\.(mp4|webm)(\?|$)/i.test(url)) {
+        el = document.createElement("video");
+        el.src = url; el.controls = true; el.autoplay = true; el.playsInline = true;
+      } else {
+        el = document.createElement("iframe");
+        el.src = url + (url.includes("?") ? "&" : "?") + "autoplay=1";
+        el.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media";
+        el.setAttribute("allowfullscreen", "");
+      }
+      media.appendChild(el);
+      reel.classList.add("is-playing");
+    };
+    reel.addEventListener("click", load);
+    reel.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); load(); }
+    });
+  });
 })();

@@ -374,6 +374,101 @@ body.nav-open .nav-toggle span::after { top:0; transform: rotate(-45deg); }
   .stats { grid-template-columns: 1fr; }
 }
 
+/* ============================================================
+   LOGOS DE CLIENTES (imagens reais)
+   ============================================================ */
+.client-row { display: flex; flex-wrap: wrap; align-items: center; gap: clamp(1.6rem, 4vw, 3.6rem); }
+.client-row img {
+  height: clamp(24px, 3.2vw, 36px); width: auto; max-width: 150px; object-fit: contain;
+  opacity: .5; filter: grayscale(1); transition: opacity .3s var(--ease), filter .3s var(--ease);
+}
+.client-row img:hover { opacity: 1; filter: grayscale(0); }
+
+/* ============================================================
+   STRIP DE FERRAMENTAS (ícones reais)
+   ============================================================ */
+.stack-list { display: flex; flex-wrap: wrap; align-items: center; gap: clamp(1.3rem, 3vw, 2.4rem); }
+.stack-list img {
+  height: clamp(22px, 2.6vw, 27px); width: auto; max-width: 34px; object-fit: contain;
+  opacity: .8; filter: grayscale(.35); transition: opacity .3s var(--ease), filter .3s var(--ease), transform .3s var(--ease);
+}
+.stack-list img:hover { opacity: 1; filter: grayscale(0); transform: translateY(-2px); }
+
+/* ============================================================
+   REEL / BLOCO DE VÍDEO (full-bleed, click-to-load)
+   ============================================================ */
+.reel-section { padding-block: clamp(16px, 3vw, 40px); }
+.container-wide { width: 100%; max-width: 1360px; margin-inline: auto; padding-inline: var(--gutter); }
+.reel {
+  position: relative; border-radius: var(--radius-lg); overflow: hidden; cursor: pointer;
+  border: 1px solid var(--line); background: #05060a;
+  transition: box-shadow .4s var(--ease), transform .4s var(--ease);
+}
+.reel:hover { box-shadow: 0 40px 90px -50px rgba(60,80,220,.6); }
+.reel:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.reel-media { position: relative; aspect-ratio: 16 / 9; }
+@media (min-width: 1024px) { .reel-media { aspect-ratio: 21 / 9; } }
+.reel-poster {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(60% 90% at 28% 30%, rgba(91,173,245,.55), transparent 60%),
+    radial-gradient(55% 85% at 78% 72%, rgba(186,91,245,.5), transparent 58%),
+    linear-gradient(120deg, #0a1130, #0a0a14 60%);
+}
+.reel-poster--dark {
+  background:
+    radial-gradient(55% 85% at 25% 30%, rgba(91,173,245,.4), transparent 60%),
+    radial-gradient(50% 80% at 80% 75%, rgba(186,91,245,.38), transparent 58%),
+    #05060a;
+}
+.reel-overlay { position: absolute; left: clamp(20px, 4vw, 46px); bottom: clamp(18px, 4vw, 40px); z-index: 2; display: flex; flex-direction: column; gap: .4rem; color: #fff; }
+.reel-eyebrow { font-size: .76rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.72); font-weight: 600; }
+.reel-title { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.4rem, 3vw, 2.6rem); letter-spacing: -.025em; }
+.reel-play {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 2;
+  width: clamp(62px, 6vw, 86px); aspect-ratio: 1; border-radius: 50%;
+  background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.5); color: #fff;
+  backdrop-filter: blur(6px); display: grid; place-items: center; cursor: pointer;
+  transition: transform .3s var(--ease), background .3s var(--ease), border-color .3s var(--ease);
+}
+.reel:hover .reel-play { transform: translate(-50%,-50%) scale(1.08); background: var(--accent); border-color: transparent; }
+.reel-play svg { width: 36%; margin-left: 8%; }
+.reel-hint { position: absolute; top: clamp(14px, 2vw, 22px); right: clamp(14px, 2vw, 24px); z-index: 2; font-size: .72rem; color: rgba(255,255,255,.6); }
+.reel.is-playing .reel-poster,
+.reel.is-playing .reel-overlay,
+.reel.is-playing .reel-play,
+.reel.is-playing .reel-hint { display: none; }
+.reel iframe, .reel video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+
+/* ============================================================
+   SHOWCASE DE IMAGENS (reais + espaço reservado)
+   ============================================================ */
+.showcase-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.shot { position: relative; margin: 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--bg-soft); aspect-ratio: 4 / 5; }
+.shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .6s var(--ease); }
+.shot:hover img { transform: scale(1.04); }
+.shot--placeholder { display: grid; place-items: center; border-style: dashed; border-color: #cfd6e6; background: var(--bg-softer); }
+.shot--placeholder .ph { display: flex; flex-direction: column; align-items: center; gap: .5rem; color: var(--ink-3); text-align: center; padding: 1rem; }
+.shot--placeholder .ph svg { width: 34px; height: 34px; color: var(--accent); opacity: .8; }
+.shot--placeholder .ph span { font-weight: 600; color: var(--ink-2); }
+.shot--placeholder .ph small { font-size: .76rem; }
+
+/* ============================================================
+   CAL.COM EMBED
+   ============================================================ */
+.cal-embed {
+  margin: clamp(30px, 4vw, 46px) auto 0; max-width: 1040px; width: 100%;
+  border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden;
+  background: var(--bg); box-shadow: 0 40px 90px -60px rgba(3,7,18,.4);
+}
+#my-cal-inline { min-height: 620px; width: 100%; overflow: auto; }
+
+@media (max-width: 760px) {
+  .showcase-grid { grid-template-columns: 1fr; }
+  .shot { aspect-ratio: 4 / 3; }
+  #my-cal-inline { min-height: 560px; }
+}
+
 /* Acessibilidade — reduzir movimento */
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
