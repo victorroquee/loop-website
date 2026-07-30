@@ -47,7 +47,7 @@
   /* ---------------- Mesh-gradient animado (fundo vivo) ---------------- */
   function mesh(canvas) {
     const ctx = canvas.getContext("2d");
-    const COLORS = [[91, 173, 245], [186, 91, 245], [126, 134, 245], [70, 200, 230]];
+    const COLORS = [[91, 173, 245], [186, 91, 245], [126, 134, 245], [150, 120, 250]];
     let W = 0, H = 0, dpr = 1, blobs = [], raf = null, running = false, tick = 0;
     function resize() {
       const r = canvas.getBoundingClientRect();

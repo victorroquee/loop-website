@@ -291,7 +291,7 @@ body.nav-open .nav-toggle span::after { top:0; transform: rotate(-45deg); }
 .prod h3 { color: #fff; font-size: 1.25rem; margin-bottom: .55rem; }
 .prod p { color: var(--studio-mut); font-size: .93rem; }
 .prod .state { margin-top: auto; padding-top: 1.3rem; font-size: .82rem; color: var(--studio-mut); display: inline-flex; align-items: center; gap: .5rem; }
-.prod .state .dot { width: 7px; height: 7px; border-radius: 50%; background: #56d364; box-shadow: 0 0 0 3px rgba(86,211,100,.18); }
+.prod .state .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-blue); box-shadow: 0 0 0 3px rgba(91,173,245,.2); }
 
 /* ============================================================
    STACK STRIP
@@ -396,7 +396,7 @@ body.nav-open .nav-toggle span::after { top:0; transform: rotate(-45deg); }
 .container-wide { width: 100%; max-width: 1360px; margin-inline: auto; padding-inline: var(--gutter); }
 .reel {
   position: relative; border-radius: var(--radius-lg); overflow: hidden; cursor: pointer;
-  border: 1px solid var(--line); background: #05060a;
+  border: 1px solid var(--line); background: #030712;
   transition: box-shadow .4s var(--ease), transform .4s var(--ease);
 }
 .reel:hover { box-shadow: 0 40px 90px -50px rgba(60,80,220,.6); }
@@ -414,7 +414,7 @@ body.nav-open .nav-toggle span::after { top:0; transform: rotate(-45deg); }
   background:
     radial-gradient(55% 85% at 25% 30%, rgba(91,173,245,.4), transparent 60%),
     radial-gradient(50% 80% at 80% 75%, rgba(186,91,245,.38), transparent 58%),
-    #05060a;
+    #030712;
 }
 .reel-overlay { position: absolute; left: clamp(20px, 4vw, 46px); bottom: clamp(18px, 4vw, 40px); z-index: 2; display: flex; flex-direction: column; gap: .4rem; color: #fff; }
 .reel-eyebrow { font-size: .76rem; letter-spacing: .02em; text-transform: uppercase; color: rgba(255,255,255,.72); font-weight: 600; }
@@ -438,7 +438,7 @@ body.nav-open .nav-toggle span::after { top:0; transform: rotate(-45deg); }
 /* ============================================================
    SHOWCASE DE IMAGENS (reais + espaço reservado)
    ============================================================ */
-.showcase-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.showcase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .shot { position: relative; margin: 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--bg-soft); aspect-ratio: 4 / 5; }
 .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .6s var(--ease); }
 .shot:hover img { transform: scale(1.04); }
@@ -489,7 +489,7 @@ body.nav-open .nav-toggle span::after { top:0; transform: rotate(-45deg); }
 /* ============================================================
    COVER / MANIFESTO (vídeo de fundo em loop + mesh)
    ============================================================ */
-.cover { position: relative; overflow: hidden; isolation: isolate; color: #fff; background: #05060a; }
+.cover { position: relative; overflow: hidden; isolation: isolate; color: #fff; background: #030712; }
 .cover-bg { position: absolute; inset: 0; z-index: 0; }
 .cover-video, .cover-mesh { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .cover-video { opacity: 0; transition: opacity .8s var(--ease); }
